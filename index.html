@@ -1,4 +1,133 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
+<html>
+<head>
+    <title>Club Management System</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .box {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 5px;
+            color:rgb(87, 87, 210);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #eee;
+            padding: 5px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Club Management System</h1>
+
+<!-- Members Section -->
+<div class="box">
+    <h2>Add Member</h2>
+    <input type="text" id="mname" placeholder="Name"><br>
+    <input type="text" id="mreg" placeholder="Registration No"><br>
+    <input type="text" id="mrole" placeholder="Role"><br>
+    <input type="text" id="mcontact" placeholder="Contact"><br>
+    <button onclick="addMember()">Add Member</button>
+
+    <h3>Members List</h3>
+    <ul id="memberList"></ul>
+</div>
+
+<!-- Event Section -->
+<div class="box">
+    <h2>Add Event</h2>
+    <input type="text" id="ename" placeholder="Event Name"><br>
+    <input type="date" id="edate"><br>
+    <input type="time" id="etime"><br>
+    <input type="text" id="edesc" placeholder="Description"><br>
+    <button onclick="addEvent()">Add Event</button>
+
+    <h3>Event List</h3>
+    <ul id="eventList"></ul>
+</div>
+
+<!-- Attendance Section -->
+<div class="box">
+    <h2>Attendance</h2>
+    <button onclick="markAttendance()">Mark Attendance</button>
+    <ul id="attendanceList"></ul>
+</div>
+
+<script>
+    let members = [];
+    let events = [];
+
+    function addMember() {
+        let name = document.getElementById("mname").value;
+        let reg = document.getElementById("mreg").value;
+        let role = document.getElementById("mrole").value;
+        let contact = document.getElementById("mcontact").value;
+
+        members.push(name + " (" + reg + ")");
+        displayMembers();
+    }
+
+    function displayMembers() {
+        let list = document.getElementById("memberList");
+        list.innerHTML = "";
+        members.forEach(m => {
+            let li = document.createElement("li");
+            li.innerText = m;
+            list.appendChild(li);
+        });
+    }
+
+    function addEvent() {
+        let name = document.getElementById("ename").value;
+        let date = document.getElementById("edate").value;
+        let time = document.getElementById("etime").value;
+
+        events.push(name + " - " + date + " " + time);
+        displayEvents();
+    }
+
+    function displayEvents() {
+        let list = document.getElementById("eventList");
+        list.innerHTML = "";
+        events.forEach(e => {
+            let li = document.createElement("li");
+            li.innerText = e;
+            list.appendChild(li);
+        });
+    }
+
+    function markAttendance() {
+        let list = document.getElementById("attendanceList");
+        list.innerHTML = "";
+        members.forEach(m => {
+            let li = document.createElement("li");
+            li.innerText = m + " : Present";
+            list.appendChild(li);
+        });
+    }
+</script>
+
+</body>
+</html>
+DOCTYPE html>
 <html>
 <head>
     <title>Club Management System</title>
@@ -126,3 +255,4 @@
 
 </body>
 </html>
+
